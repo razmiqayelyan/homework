@@ -72,26 +72,28 @@ during fighting:  Avada Kedavra,  Crucio, Imperio  . You get 1 point when your w
 become a winner if  you have 2 corresponding words.
 '''
 import random
+
+
 total = 0
 x =  ['Avada Kedavra',  'Crucio', 'Imperio']
-for i in range(3):
-	pc = random.choice(x)
-	user = input('Enter your choice:\n"Avada Kedavra", "Crucio", "Imperio"\n ').title()
-	if pc == user:
-		total += 1
-		print(f'* * * * * You are right,you have {2-i} chance * * * * *')
-	else: 
-		total -+ 1
-		print(f'* * * * * Wrong,you have {2-i} chance * * * * *')
-		
 class Magic:
-	def __init__(self,total):
+	def __init__(self,x,total):
+		self.x = x
 		self.total = total
-	def wow(self):
+	def game(self):
+		for i in range(3):
+			pc = random.choice(self.x)
+			print(pc)
+			user = input('Enter your choice:\n"Avada Kedavra", "Crucio", "Imperio"\n ').title()
+			if pc == user:
+				self.total += 1
+				print(f'* * * * * You are right,you have {2-i} chance * * * * *')
+			else: 
+				self.total -+ 1
+				print(f'* * * * * Wrong,you have {2-i} chance * * * * *')
 		if self.total >= 2:
 			return ' - - - You are Win - - - '
 		else:
 			return ' - - - You are Lose - - - '
-
-u = Magic(total)
-print(u.wow())
+player = Magic(x,total)
+print(player.game())
