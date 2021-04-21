@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	
+	<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+  	{% if user.is_authenticated %}
+    <a class="navbar-brand"><strong>Profile Posts</strong></a>
+    <form class="d-flex">
+	<a href="{% url 'usblog' %}">First Page</a>
+	{% else %}
+	 <a href="#" class="navbar-brand">Login</a>
+	<a href="accounts/register">Register</a> 
+	{% endif %}  	
+    </form>
+  </div>
+</nav>
+	 <div class="form control"><br>
+
+<p>
+	{% if user.is_authenticated %}
+	<h3>- - - User Posts - - -</h3>
+	{% for snips in snipps %}
+	{% if snips.user == username %}
+
+	<img src="{{ snips.img.url }}" alt="Image" id='nkar' class="img-fluid">
+	<h2 class="font-size-regular">{{ snips.blogname }}</h2>
+	<h3>{{ snips.user }}</h3>
+	{% if user.is_authenticated %}
+	<p>{{ snips.blogdes }}</p>
+	{% elif snips.blogname == None %}
+	<p>The User Has No Posts</p>
+	{% endif %}
+	<h2>*  *  *  *  *  *  *  *</h2><br>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+</p>
+</div>
+
+
+
+
+{% endblock %}
