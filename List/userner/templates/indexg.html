@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
-	{% if user.is_authenticated %}
-	{% block title %}
-	{{ user.username|title }}'s profile
 	
-	{% endblock %}
+	{% block title %}
+	{% if user.is_authenticated %}
+	{{ user.username|title }}'s profile
 	{% endif %}
+	{% endblock %}
+	
 	
 {% block content %}
 <a target="_blank" id='help' class='btn btn-primary btn-sm' href="https://t.me/Razos_Bot"><i class="fas fa-question-circle"></i>Help</a>

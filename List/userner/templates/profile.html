@@ -8,7 +8,7 @@
   	{% if user.is_authenticated %}
     <a class="navbar-brand"><strong>Hello {{ user.username|title }}</strong></a>
     <form class="d-flex">
-	<a href="accounts/logout">Logout</a>
+	<a href="{% url 'usblog' %}accounts/logout">Logout</a>
 	{% else %}
 	 <a href="#" class="navbar-brand">Login</a>
 	<a href="accounts/register">Register</a> 
