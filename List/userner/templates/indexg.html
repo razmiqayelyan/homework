@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+	{% if user.is_authenticated %}
+	{% block title %}
+	{{ user.username|title }}'s profile
+	
+	{% endblock %}
+	{% endif %}
+	
+{% block content %}
+<a target="_blank" id='help' class='btn btn-primary btn-sm' href="https://t.me/Razos_Bot"><i class="fas fa-question-circle"></i>Help</a>
+
+
+
+<div class="topnav">
+	{% if user.is_authenticated %}
+
+
+	<h3>{{ user.username|title }}'s profile</h3>
+	<a class="btn btn-primary btn-sm" href="{% url 'profile' user.username %}"><i class="fas fa-users"></i> {{ user.username|title }}'s Profile</a>
+	 
+	<a class="btn btn-warning btn-sm" href="snippet_detail"><i class="fas fa-edit"></i> Write post</a>
+	 
+	{% else %}
+	<a class="btn btn-danger" href="accounts/register"><i class="fas fa-user-plus"></i>Register</a>
+	 
+	<a class="btn btn-primary" href="accounts/login"><i class="fas fa-users"></i>Login</a>
+	 
+	{% endif %}
+</div>
+<h1>- - All Posts - -</h1>
+<div class="form control">
+
+<p>
+	{% if user.is_authenticated %}
+
+	{% for snips in snipps %}
+	<img src="{{ snips.img.url }}" alt="Image" id='nkar' class="img-fluid">
+	<h3 class="font-size-regular">{{ snips.blogname }}</h3>
+	<h4>Added by <a href="{% url 'userpage' snips.user %}">{{ snips.user|title }}</a></h4>
+	{% if user.is_authenticated %}
+	<p>{{ snips.blogdes }}</p>
+	{% else %}
+	<p>Register/Login to know more</p>
+	{% endif %}
+	<h2>*  *  *  *  *  *  *  *</h2><br>
+	{% endfor %}
+	{% else %}
+		{% for snips in snipps %}
+	<img src="{{ snips.img.url }}" alt="Image" id='nkar' class="img-fluid">
+	<h3 class="font-size-regular">{{ snips.blogname }}</h3>
+
+	{% if user.is_authenticated %}
+	<p>{{ snips.blogdes }}</p>
+	{% else %}
+	<p>Register/Login to know more</p>
+	{% endif %}
+	<h2>*  *  *  *  *  *  *  *</h2><br>
+	{% endfor %}
+{% endif %}
+
+</p>
+</div>
+
+{% endblock %}

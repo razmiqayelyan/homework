@@ -1,0 +1,39 @@
+{% load static %}
+  
+#nkar {
+	width: 100px;
+}
+
+#formaya {
+	margin-left: 32%;
+	width: 320px;
+	margin-top: 10px;
+}
+#helo {
+	position: relative;
+	left: 110px;
+	margin-top: 5px;
+}
+#help {
+	float: right;
+}
+
+#beq {
+	position: relative;
+	top:  150px;
+	left: 80px;
+}
+#delete {
+	margin-left: 35%;
+	width: 320px;
+	margin-top: 8px;
+}
+#str {
+	margin-left: 22%;
+	
+	margin-top: 188px;
+}
+
+#dilit{
+	width: 207px;
+}
